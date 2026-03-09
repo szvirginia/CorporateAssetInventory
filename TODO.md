@@ -2,7 +2,7 @@
 
 ### 1. Fázis: Az Alapozás (Adatbázis és Modellek)
 - [X] ~~*Mappaszerkezet kialakítása (`Backend` és `Frontend` mappák)*~~ [2026-03-09]
-- [ ] Új Web API projekt létrehozása a terminálban (`dotnet new webapi -n Backend`)
+- [X] ~~*Új Web API projekt létrehozása a terminálban (`dotnet new webapi -n Backend`)*~~ [2026-03-09]
 - [ ] C# Modellek megírása: `Employee.cs` (Dolgozó) és `Asset.cs` (Eszköz)
 - [ ] Státusz Enum elkészítése (Raktáron, Kiadva, Javítás alatt)
 - [ ] "One-to-Many" (Egy a többhöz) kapcsolat beállítása az Entity Frameworkben
