@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Backend.Models;
 
 public enum AssetType
@@ -9,8 +11,14 @@ public enum AssetType
 
 public class Asset
 {
+    [Key]
     public int Id { get; set; }
+
+    [StringLength(50)]
     public string AssetName { get; set; } = string.Empty;
+
+    [MinLength(5)]
+    [MaxLength(50)]
     public string SerialNumber { get; set; } = string.Empty;
     public AssetType Type { get; set; } = AssetType.InStock;
 
