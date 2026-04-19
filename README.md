@@ -1,6 +1,7 @@
-Corporate Asset Inventory 🖥️
+# Corporate Asset Inventory
 
 A secure internal system to track IT assets and manage employee assignments.
+
 📖 Project Overview
 
 This project is a centralized IT asset management system designed to track corporate hardware (laptops, monitors, peripherals) and map them to specific employees. It focuses on clean architecture, relational data management, and web security best practices.
@@ -12,7 +13,7 @@ This project is a centralized IT asset management system designed to track corpo
 
     Database: MySQL (Entity Framework Core, Relational Data Mapping)
 
-🚀 Key Features & Implementation
+| Key Features & Implementation
 
     Asset Lifecycle Management: Track devices through different statuses: In Stock, Assigned, or In Repair.
 
@@ -22,7 +23,7 @@ This project is a centralized IT asset management system designed to track corpo
 
     Database Seeding: Automated initial data population for testing and development.
 
-🔏 Security Implementation (Core Focus)
+| Security Implementation (Core Focus)
 
 As an aspiring Cybersecurity Analyst, I implemented specific measures to mitigate common web vulnerabilities:
 
@@ -32,7 +33,7 @@ As an aspiring Cybersecurity Analyst, I implemented specific measures to mitigat
 
     Server-Side Validation: All incoming data is validated on the backend to ensure data integrity and prevent malformed inputs.
 
-📈 Future Improvements
+| Future Improvements
 
     Implementing JWT-based Authentication.
 
