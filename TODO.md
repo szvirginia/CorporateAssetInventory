@@ -11,7 +11,7 @@
 
 ### 2. Fázis: Az Üzleti Logika (Backend és LINQ)
 - [X] ~~*Alap CRUD végpontok megírása (Eszközök hozzáadása, módosítása, törlése)*~~ [2026-04-19]
-- [ ] Kereső és szűrő végpont megírása C#-ban (LINQ használatával)
+- [X] ~~*Kereső és szűrő végpont megírása C#-ban (LINQ használatával)*~~ [2026-04-27]
 - [X] ~~*Végpontok tesztelése Swagger-ben (Sikeresen működik a szerver önmagában?)*~~ [2026-04-19]
 
 ### 3. Fázis: Az Arc (Frontend és UI)

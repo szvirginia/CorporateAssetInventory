@@ -23,7 +23,7 @@ public class AssetsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetAssetById(int id)
+    public async Task<IActionResult> GetAssetById([FromRoute] int id)
     {
         var asset = await _context.Assets.Include(a => a.Employee).FirstOrDefaultAsync(a => a.Id == id);
         if (asset == null) return NotFound();
@@ -32,7 +32,7 @@ public class AssetsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAsset(Asset newAsset)
+    public async Task<IActionResult> CreateAsset([FromBody] Asset newAsset)
     {
         _context.Assets.Add(newAsset);
         await _context.SaveChangesAsync();
@@ -40,7 +40,7 @@ public class AssetsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateAsset(int id, Asset updatedAsset)
+    public async Task<IActionResult> UpdateAsset([FromRoute] int id, [FromBody] Asset updatedAsset)
     {
         var asset = await _context.Assets.FindAsync(id);
         if (asset == null) return NotFound();
@@ -55,7 +55,7 @@ public class AssetsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteAsset(int id)
+    public async Task<IActionResult> DeleteAsset([FromRoute] int id)
     {
         var asset = await _context.Assets.FindAsync(id);
         if (asset == null) return NotFound();
@@ -66,7 +66,6 @@ public class AssetsController : ControllerBase
         return Ok(new { message = "Asset deleted." });
     }
 
-    // --- ITT VAN A KERESŐ (LINQ) ---
     [HttpGet("search")]
     public async Task<IActionResult> SearchAssets([FromQuery] string keyword)
     {

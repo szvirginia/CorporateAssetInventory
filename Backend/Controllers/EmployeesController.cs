@@ -19,7 +19,7 @@ public class EmployeesController : ControllerBase
     public async Task<IActionResult> GetAllEmployees()
     {
         var employees = await _context.Employees.ToListAsync();
-        return Ok(employees); // <-- Itt hiányzott az 'employees' a zárójelből!
+        return Ok(employees);
     }
 
     [HttpGet("{id}")]
@@ -53,7 +53,7 @@ public class EmployeesController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteEmployee(int id) // <-- Itt volt egy felesleges paraméter!
+    public async Task<IActionResult> DeleteEmployee(int id)
     {
         var employee = await _context.Employees.FindAsync(id);
         if (employee == null) return NotFound();
