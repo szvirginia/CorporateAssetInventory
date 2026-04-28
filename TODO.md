@@ -15,7 +15,7 @@
 - [X] ~~*Végpontok tesztelése Swagger-ben (Sikeresen működik a szerver önmagában?)*~~ [2026-04-19]
 
 ### 3. Fázis: Az Arc (Frontend és UI)
-- [ ] Adminisztrációs felület (Dashboard) felépítése HTML/CSS-ben
+- [X] ~~*Adminisztrációs felület (Dashboard) felépítése HTML/CSS-ben*~~ [2026-04-28]
 - [ ] Dinamikus lista betöltése JavaScripttel (GET kérés)
 - [ ] Keresősáv bekötése (Ahogy gépelsz, azonnal szűrjön a listában)
 - [ ] Űrlap megépítése eszközök kiadásához (Dolgozó kiválasztása legördülő menüből)

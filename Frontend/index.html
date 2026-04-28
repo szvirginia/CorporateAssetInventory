@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Corporate Asset Inventory</title>
+</head>
+
+<body>
+    <header>Corporate Asset Inventory</header>
+    <div id="asset-form">
+        <label for="asset-name">Asset Name:</label>
+        <input type="text" name="asset-name" id="asset-name">
+        <label for="serial-number">Serial number:</label>
+        <input type="text" name="serial-number" id="serial-number">
+        <label for="asset-type">Status:</label>
+        <select id="asset-type" name="asset-type">
+            <option value="0">In Stock</option>
+            <option value="1">Assigned</option>
+            <option value="2">In Repair</option>
+        </select>
+        <label for="employee-id">Employee ID:</label>
+        <select id="employee-id" name="employee-id">
+            <option value="0"></option>
+        </select>
+        <button id="btn-add">Add Asset</button>
+    </div>
+    <input type="text" id="search-input" placeholder="Search assets...">
+    <table>
+        <thead>
+            <tr>
+                <th>Asset Name</th>
+                <th>Serial Number</th>
+                <th>Type</th>
+                <th>Assigned To</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+    <script src="app.js"></script>
+</body>
+
+</html>
