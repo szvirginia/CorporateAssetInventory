@@ -30,7 +30,7 @@
         <select id="employee-id" name="employee-id">
             <option value="0"></option>
         </select>
-        <button id="btn-add">Add Asset</button>
+        <button id="btn-add" class="main-btn">Add Asset</button>
     </div>
     <input type="text" id="search-input" placeholder="Search assets...">
     <table>
@@ -46,6 +46,34 @@
         <tbody id="table-body">
         </tbody>
     </table>
+
+    <div id="edit-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Edit Asset</h3>
+            <input type="hidden" id="edit-id"> <label for="edit-asset-name">Asset Name:</label>
+            <input type="text" id="edit-asset-name">
+
+            <label for="edit-serial-number">Serial number:</label>
+            <input type="text" id="edit-serial-number">
+
+            <label for="edit-status">Status:</label>
+            <select id="edit-status">
+                <option value="0">In Stock</option>
+                <option value="1">Assigned</option>
+                <option value="2">In Repair</option>
+            </select>
+
+            <label for="edit-employee-id">Assigned To:</label>
+            <select id="edit-employee-id">
+            </select>
+
+            <div class="modal-buttons">
+                <button id="btn-save-edit">Save Changes</button>
+                <button id="btn-close-modal" style="background-color: #6c757d;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 

@@ -44,4 +44,31 @@ app.UseHttpsRedirection();
 // Controllers path
 app.MapControllers();
 
+// Ensure database is created/migrated and seed initial data if empty
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var db = services.GetRequiredService<AssetDbContext>();
+        db.Database.Migrate();
+
+        // seed if empty
+        if (!db.Assets.Any())
+        {
+            db.Assets.AddRange(
+                new Asset { AssetName = "Laptop - Default A", SerialNumber = "DEF-A-0001", Type = AssetType.InStock },
+                new Asset { AssetName = "Monitor - Default B", SerialNumber = "DEF-B-0002", Type = AssetType.InStock },
+                new Asset { AssetName = "Keyboard - Default C", SerialNumber = "DEF-C-0003", Type = AssetType.InStock }
+            );
+            db.SaveChanges();
+        }
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while migrating or seeding the database.");
+    }
+}
+
 app.Run();

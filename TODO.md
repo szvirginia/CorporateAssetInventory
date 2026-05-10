@@ -17,12 +17,15 @@
 ### 3. Fázis: Az Arc (Frontend és UI)
 - [X] ~~*Adminisztrációs felület (Dashboard) felépítése HTML/CSS-ben*~~ [2026-04-28]
 - [X] ~~*Dinamikus lista betöltése JavaScripttel (GET kérés)*~~ [2026-04-29]
-- [ ] Keresősáv bekötése (Ahogy gépelsz, azonnal szűrjön a listában)
-- [ ] Űrlap megépítése eszközök kiadásához (Dolgozó kiválasztása legördülő menüből)
+- [X] ~~*Keresősáv bekötése (Ahogy gépelsz, azonnal szűrjön a listában)*~~ [2026-05-09]
+- [X] ~~*Űrlap megépítése eszközök kiadásához (Dolgozó kiválasztása legördülő menüből)*~~ [2026-05-09]
+- [ ] POST kérés megírása új eszköz hozzáadásához
 - [ ] FEJLESZTÉS: Aloldal a dolgozók kezeléséhez (Hozzáadás, módosítás, törlés)
 
 
 ### 4. Fázis: Biztonság és Polírozás (Security)
-- [ ] Backend validáció (pl. ne lehessen elmenteni eszközt szériaszám nélkül)
+- [ ] Backend validáció (pl. ne lehessen elmenteni eszközt szériaszám nélkül + REPAIR vagy IN STOCK státusz esetén ne lehessen dolgozót hozzárendelni + ASSIGNED státusz esetén kötelező dolgozó)
 - [ ] Frontend validáció (Figyelmeztető hibaüzenetek a felhasználónak)
 - [ ] Alapvető XSS (Cross-Site Scripting) védelem tesztelése a keresőmezőnél
+- [ ] Alapvető SQL Injection védelem tesztelése (Pl. `' OR '1'='1` keresőmezőbe írása)
+- [ ] Rengeteg teszteset írása a backend végpontokhoz (NUnit vagy xUnit használatával)
