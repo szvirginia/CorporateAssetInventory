@@ -19,8 +19,10 @@
 - [X] ~~*Dinamikus lista betöltése JavaScripttel (GET kérés)*~~ [2026-04-29]
 - [X] ~~*Keresősáv bekötése (Ahogy gépelsz, azonnal szűrjön a listában)*~~ [2026-05-09]
 - [X] ~~*Űrlap megépítése eszközök kiadásához (Dolgozó kiválasztása legördülő menüből)*~~ [2026-05-09]
-- [ ] POST kérés megírása új eszköz hozzáadásához
+- [X] ~~*POST kérés megírása új eszköz hozzáadásához*~~ [2026-05-12]
 - [ ] FEJLESZTÉS: Aloldal a dolgozók kezeléséhez (Hozzáadás, módosítás, törlés)
+        - [ ] Javaslat: Dolgozók listázása egy új aloldalon, ahol szintén lehet keresni és szűrni
+        - [ ] Javaslat: Főoldalon dolgozó neve mellett megjeleníteni a munkacsoportot (pl. HR, IT, stb.)
 
 
 ### 4. Fázis: Biztonság és Polírozás (Security)

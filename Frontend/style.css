@@ -151,17 +151,75 @@ tbody tr:hover {
 .modal-content {
     background-color: white;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 12px;
+    /* Kisebb rádiusz, hogy egyezzen a fenti űrlappal */
     width: 90%;
-    max-width: 450px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Modal címsor */
+.modal-content h3 {
+    color: rgb(90, 9, 90);
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 22px;
+}
+
+
+.modal-content label {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: -5px;
+}
+
+.modal-content input,
+.modal-content select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    font-family: inherit;
+}
+
 .modal-buttons {
     display: flex;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+#btn-save-edit {
+    background-color: rgb(90, 9, 90);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    flex: 1;
+    /* Fele-fele arányban töltik ki a helyet */
+    transition: all 0.3s ease;
+}
+
+#btn-save-edit:hover {
+    background-color: rgb(120, 20, 120);
+}
+
+#btn-close-modal {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+#btn-close-modal:hover {
+    background-color: #5a6268;
 }

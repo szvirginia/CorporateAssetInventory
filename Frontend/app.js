@@ -152,3 +152,99 @@ async function createAsset() {
         alert('Failed to add asset. See console for details.');
     }
 }
+
+const addStatusSelect = document.getElementById('asset-type');
+const addEmployeeSelect = document.getElementById('employee-id');
+
+function checkAddStatus() {
+    if (addStatusSelect.value !== "1") {
+        addEmployeeSelect.value = "";
+        addEmployeeSelect.disabled = true;
+        addEmployeeSelect.style.opacity = "0.5";
+    } else {
+        addEmployeeSelect.disabled = false;
+        addEmployeeSelect.style.opacity = "1";
+    }
+}
+
+addStatusSelect.addEventListener('change', checkAddStatus);
+checkAddStatus();
+
+async function openEditModal(id) {
+    try {
+        const response = await fetch(`${apiUrl}/${id}`);
+        const asset = await response.json();
+
+        document.getElementById("edit-id").value = asset.id;
+        document.getElementById("edit-asset-name").value = asset.assetName;
+        document.getElementById("edit-serial-number").value = asset.serialNumber;
+        document.getElementById("edit-status").value = asset.type;
+
+        const empResp = await fetch('http://localhost:5001/api/Employees');
+        const employees = await empResp.json();
+        const select = document.getElementById("edit-employee-id");
+        select.innerHTML = '<option value="">Unassigned</option>';
+
+        employees.forEach(e => {
+            const isSelected = asset.employeeId === e.id ? 'selected' : '';
+            select.innerHTML += `<option value="${e.id}" ${isSelected}>${e.name}</option>`;
+        });
+
+        const checkStatus = () => {
+            const status = document.getElementById("edit-status").value;
+            if (status !== "1") {
+                select.value = "";
+                select.disabled = true;
+                select.style.opacity = "0.5";
+            }
+            else {
+                select.disabled = false;
+                select.style.opacity = "1";
+            }
+        };
+
+        document.getElementById("edit-status").onchange = checkStatus;
+        checkStatus();
+
+        document.getElementById("edit-modal").style.display = 'flex';
+
+    } catch (error) {
+        console.log("Error opening edit modal:", error);
+
+    }
+}
+
+function closeModal() {
+    document.getElementById("edit-modal").style.display = 'none';
+}
+document.getElementById("btn-close-modal").addEventListener('click', closeModal);
+
+document.getElementById("btn-save-edit").addEventListener("click", async () => {
+    const id = document.getElementById("edit-id").value;
+    const name = document.getElementById("edit-employee-id").value;
+
+    const updatedAsset = {
+        id: parseInt(id),
+        assetName: document.getElementById("edit-asset-name").value.trim(),
+        serialNumber: document.getElementById("edit-serial-number").value.trim(),
+        type: parseInt(document.getElementById("edit-status").value),
+        employeeId: name === '' ? null : parseInt(name)
+    };
+
+    try {
+        const response = await fetch(`${apiUrl}/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedAsset)
+        });
+
+        if (response.ok) {
+            closeModal();
+            loadAssets();
+        } else {
+            alert('Failed to update asset. See console for details.');
+        }
+    } catch (error) {
+        console.error("Failed to update asset: ", error);
+    }
+});
