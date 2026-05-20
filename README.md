@@ -25,7 +25,7 @@ This project is a centralized IT asset management system designed to track corpo
 
 | Security Implementation (Core Focus)
 
-As an aspiring Cybersecurity Analyst, I implemented specific measures to mitigate common web vulnerabilities:
+As an aspiring Cybersecurity Analyst, I would like to implement specific measures to mitigate common web vulnerabilities:
 
     XSS Mitigation (Cross-Site Scripting): On the frontend, data is rendered exclusively using .textContent instead of .innerHTML to prevent the execution of malicious scripts.
 
