@@ -1,5 +1,19 @@
 const apiUrl = 'http://localhost:5001/api/Assets';
 
+// xss security: escape HTML special characters to prevent injection attacks
+function escapeHTML(str) {
+    if (!str) return '';
+    return str.toString().replace(/[&<>'"]/g,
+        tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        }[tag] || tag)
+    );
+}
+
 async function loadAssets() {
     try {
         const response = await fetch(apiUrl);
@@ -28,16 +42,15 @@ async function loadAssets() {
 
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${asset.assetName}</td>
-                <td>${asset.serialNumber}</td>
+                <td>${escapeHTML(asset.assetName)}</td>
+                <td>${escapeHTML(asset.serialNumber)}</td>
                 <td>${statusText}</td>
-                <td>${employeeName}</td>
+                <td>${escapeHTML(employeeName)}</td>
                 <td>
-                 <button onclick="openEditModal(${asset.id})" class="table-btn" style="background-color: #ffc107;">Edit</button>
-                 <button onclick="deleteAsset(${asset.id})" class="table-btn" style="background-color: #dc3545; color: white;">Delete</button>
+                    <button onclick="openEditModal(${asset.id})" class="table-btn" style="background-color: #ffc107;">Edit</button>
+                    <button onclick="deleteAsset(${asset.id})" class="table-btn" style="background-color: #dc3545; color: white;">Delete</button>
                 </td>
-              `;
-
+                `;
             tableBody.appendChild(tr);
         });
     } catch (error) {
@@ -90,7 +103,7 @@ searchInput.addEventListener("input", function (event) {
 });
 
 async function deleteAsset(id) {
-    if (!confirm("Are you sure about deleting this asset?")) {
+    if (!confirm("❌ Are you sure about deleting this asset?")) {
         return;
     }
 
@@ -135,21 +148,36 @@ async function createAsset() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
-
         if (response.ok) {
             document.getElementById('asset-name').value = '';
             document.getElementById('serial-number').value = '';
             document.getElementById('asset-type').value = '0';
             document.getElementById('employee-id').value = '';
             loadAssets();
-        } else {
+            alert('🎯 Asset added successfully!');
+        }
+        else if (response.status === 400) {
+            const errorData = await response.json();
+            console.error('Validation error:', errorData);
+
+            let errorMessages = [];
+            const validationErrors = errorData.errors || errorData;
+
+            for (const key in validationErrors) {
+                if (validationErrors.hasOwnProperty(key)) {
+                    errorMessages.push(`${validationErrors[key].join(', ')}`);
+                }
+            }
+            alert("⚠️ Validation failed:\n\n" + errorMessages.join('\n'));
+        }
+        else {
             const text = await response.text();
             console.error('Failed to add asset', text);
-            alert('Failed to add asset. See console for details.');
+            alert('❌ Failed to add asset. See console for details.');
         }
     } catch (error) {
         console.error('Failed to add asset', error);
-        alert('Failed to add asset. See console for details.');
+        alert('❌ Failed to add asset. See console for details.');
     }
 }
 
@@ -187,7 +215,7 @@ async function openEditModal(id) {
 
         employees.forEach(e => {
             const isSelected = asset.employeeId === e.id ? 'selected' : '';
-            select.innerHTML += `<option value="${e.id}" ${isSelected}>${e.name}</option>`;
+            select.innerHTML += `<option value="${e.id}" ${isSelected}>${escapeHTML(e.name)}</option>`;
         });
 
         const checkStatus = () => {

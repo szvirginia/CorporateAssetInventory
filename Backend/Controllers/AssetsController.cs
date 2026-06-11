@@ -34,6 +34,11 @@ public class AssetsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateAsset([FromBody] Asset newAsset)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         _context.Assets.Add(newAsset);
         await _context.SaveChangesAsync();
         return Ok(newAsset);
@@ -42,6 +47,12 @@ public class AssetsController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateAsset([FromRoute] int id, [FromBody] Asset updatedAsset)
     {
+
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var asset = await _context.Assets.FindAsync(id);
         if (asset == null) return NotFound();
 

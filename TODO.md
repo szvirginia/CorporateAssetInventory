@@ -26,8 +26,8 @@
 
 
 ### 4. Fázis: Biztonság és Polírozás (Security)
-- [ ] Backend validáció (pl. ne lehessen elmenteni eszközt szériaszám nélkül + REPAIR vagy IN STOCK státusz esetén ne lehessen dolgozót hozzárendelni + ASSIGNED státusz esetén kötelező dolgozó)
-- [ ] Frontend validáció (Figyelmeztető hibaüzenetek a felhasználónak)
-- [ ] Alapvető XSS (Cross-Site Scripting) védelem tesztelése a keresőmezőnél
-- [ ] Alapvető SQL Injection védelem tesztelése (Pl. `' OR '1'='1` keresőmezőbe írása)
-- [ ] Rengeteg teszteset írása a backend végpontokhoz (NUnit vagy xUnit használatával)
+- [X] ~~*Backend validáció (pl. ne lehessen elmenteni eszközt szériaszám nélkül + REPAIR vagy IN STOCK státusz esetén ne lehessen dolgozót hozzárendelni + ASSIGNED státusz esetén kötelező dolgozó)*~~ [2026-06-10]
+- [X] ~~*Frontend validáció (Figyelmeztető hibaüzenetek a felhasználónak)*~~ [2026-06-10]
+- [X] ~~*Alapvető XSS (Cross-Site Scripting) védelem tesztelése a keresőmezőnél*~~ [2026-05-13]
+- [X] ~~*Alapvető SQL Injection védelem tesztelése (Pl. `' OR '1'='1` keresőmezőbe írása)*~~ [2026-06-10]
+- [X] ~~*Alap tesztesetek írása a backend végpontokhoz (NUnit vagy xUnit használatával) --> SELENIUM próbálkozás*~~ [2026-06-11]
